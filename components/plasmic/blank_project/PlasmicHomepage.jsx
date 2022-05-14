@@ -13,8 +13,11 @@ import * as p from "@plasmicapp/react-web";
 import {
   classNames,
   createPlasmicElementProxy,
-  deriveRenderOpts
+  deriveRenderOpts,
+  ensureGlobalVariants
 } from "@plasmicapp/react-web";
+import Button from "../../Button"; // plasmic-import: HHZYSLp4mTA/component
+import { useScreenVariants as useScreenVariantsaq6NwC75DE93 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: AQ6NwC75dE-93/globalVariant
 import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic_blank_project.module.css"; // plasmic-import: 4eWbh43PNAB2T1MHTSCaMY/projectcss
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: qiACIIf0xms7/css
@@ -26,6 +29,10 @@ export const PlasmicHomepage__ArgProps = new Array();
 function PlasmicHomepage__RenderFunc(props) {
   const { variants, args, overrides, forNode } = props;
   const $props = props.args;
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsaq6NwC75DE93()
+  });
+
   return (
     <React.Fragment>
       <style>{`
@@ -49,14 +56,101 @@ function PlasmicHomepage__RenderFunc(props) {
             projectcss.plasmic_mixins,
             sty.root
           )}
-        />
+        >
+          <p.Stack
+            as={"div"}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.freeBox__epZng)}
+          >
+            <p.Stack
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox__j0KH)}
+            >
+              <p.PlasmicImg
+                data-plasmic-name={"img"}
+                data-plasmic-override={overrides.img}
+                alt={""}
+                className={classNames(sty.img)}
+                displayHeight={"79px"}
+                displayMaxHeight={"none"}
+                displayMaxWidth={"none"}
+                displayMinHeight={"0"}
+                displayMinWidth={"0"}
+                displayWidth={"79px"}
+                src={{
+                  src: "/plasmic/blank_project/images/f3XBuildinggif.gif",
+                  fullWidth: 500,
+                  fullHeight: 500,
+                  aspectRatio: undefined
+                }}
+              />
+
+              <p.Stack
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__ewfyw)}
+              >
+                {true ? (
+                  <Button
+                    className={classNames("__wab_instance", sty.button__rqRH)}
+                    link={"/login"}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__mw3Ut
+                      )}
+                    >
+                      {"Log In"}
+                    </div>
+                  </Button>
+                ) : null}
+              </p.Stack>
+
+              {false ? (
+                <div className={classNames(projectcss.all, sty.freeBox__jKwOl)}>
+                  <button
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.button,
+                      projectcss.__wab_text,
+                      sty.button___9KdOn
+                    )}
+                  >
+                    {"Sign up"}
+                  </button>
+
+                  {true ? (
+                    <Button
+                      className={classNames("__wab_instance", sty.button__bnUQ)}
+                      color={"clear"}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___81Koy
+                        )}
+                      >
+                        {"Log in"}
+                      </div>
+                    </Button>
+                  ) : null}
+                </div>
+              ) : null}
+            </p.Stack>
+          </p.Stack>
+        </p.Stack>
       </div>
     </React.Fragment>
   );
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root", "img"],
+  img: ["img"]
 };
 
 function makeNodeComponent(nodeName) {
@@ -88,6 +182,7 @@ export const PlasmicHomepage = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    img: makeNodeComponent("img"),
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
     internalArgProps: PlasmicHomepage__ArgProps
